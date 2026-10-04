@@ -8,6 +8,7 @@ app = FastAPI()
 con = duckdb.connect()
 con.execute("INSTALL httpfs;")
 con.execute("LOAD httpfs;")
+con.execute("SET unsafe_disable_etag_checks = true;")
 
 @app.get("/", response_class=HTMLResponse)
 def root_landing_page():
